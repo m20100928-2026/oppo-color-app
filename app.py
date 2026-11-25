@@ -18,7 +18,7 @@ def result_color(color):
         return "알 수 없음"
 
 
-st.title("🎨 나만의 보색 가이드")
+st.title("나만의 보색 가이드")
 st.write("원하는 색상을 선택하고 **[알아보기]** 버튼을 눌러보세요!")
 
 if "steps" not in st.session_state:
