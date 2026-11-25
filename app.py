@@ -18,7 +18,7 @@ def result_color(color):
         return "알 수 없음"
 
 
-st.title("나만의 보색 가이드")
+st.title("🎨 나만의 보색 가이드")
 st.write("원하는 색상을 선택하고 **[알아보기]** 버튼을 눌러보세요!")
 
 if "steps" not in st.session_state:
@@ -26,8 +26,7 @@ if "steps" not in st.session_state:
         {"selected": "빨강", "checked": False, "answer": None}
     ]
 
-i = 0
-while i < len(st.session_state.steps):
+for i in range(len(st.session_state.steps)):
     step = st.session_state.steps[i]
     is_last = i == len(st.session_state.steps) - 1
 
@@ -73,5 +72,3 @@ while i < len(st.session_state.steps):
                 ]
                 st.rerun()
             break
-
-    i += 1
