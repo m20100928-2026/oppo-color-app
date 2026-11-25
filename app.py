@@ -25,12 +25,16 @@ if "keep_going" not in st.session_state:
     st.session_state.keep_going = True
 if "checked" not in st.session_state:
     st.session_state.checked = False
+if "history" not in st.session_state:
+    st.session_state.history = []
 
 while st.session_state.keep_going:
     selected_color = st.selectbox("색상을 선택하세요:", colors)
 
     if st.button("알아보기"):
         st.session_state.checked = True
+        comp_color = result_color(selected_color)
+        st.session_state.history.append((selected_color, comp_color))
 
     if st.session_state.checked:
         comp_color = result_color(selected_color)
@@ -54,9 +58,16 @@ while st.session_state.keep_going:
 
     break
 
+if st.session_state.history:
+    st.write("---")
+    st.subheader("📜 지금까지 선택한 색상 기록")
+    for idx, (sel, comp) in enumerate(st.session_state.history, 1):
+        st.write(f"{idx}. **{sel}**색 ➔ 보색: **{comp}**")
+
 if not st.session_state.keep_going:
     st.info("보색 가이드 앱을 종료합니다. 이용해 주셔서 감사합니다!")
     if st.button("다시 시작하기"):
         st.session_state.keep_going = True
         st.session_state.checked = False
+        st.session_state.history = []
         st.rerun()
