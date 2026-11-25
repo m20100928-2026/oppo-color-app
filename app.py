@@ -18,7 +18,7 @@ def result_color(color):
         return "알 수 없음"
 
 
-st.title("🎨 보색 가이드 웹 앱")
+st.title("나만의 보색 가이드")
 st.write("원하는 색상을 선택하고 **[알아보기]** 버튼을 눌러보세요!")
 
 if "steps" not in st.session_state:
@@ -66,7 +66,7 @@ while i < len(st.session_state.steps):
                 st.rerun()
 
         if step["answer"] == "N":
-            st.info("보색 가이드 앱을 종료합니다. 이용해 주셔서 감사합니다!")
+            st.info("나만의 보색 가이드를 종료합니다. 이용해 주셔서 감사합니다!")
             if st.button("다시 시작하기", key="restart"):
                 st.session_state.steps = [
                     {"selected": "빨강", "checked": False, "answer": None}
